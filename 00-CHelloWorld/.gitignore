@@ -1,7 +1,0 @@
-# Generated files
-bin/
-obj/
-
-# Visual Studio Code files
-./vscode/*
-!.vscode/settings.json

@@ -9,7 +9,7 @@ OBJS 	= $(OBJ_DIR)/hello.o
 C11FLAGS= -std=c11 -Wall -I$(INC_DIR)
 C18FLAGS= -std=c18 -Wall -I$(INC_DIR)
 
-all: $(TARGET11) $(TARGET18)
+all: $(TARGET11) $(TARGET18) $(OBJS18)
 
 $(TARGET11): $(OBJS)
 	@mkdir -p $(BIN_DIR)
@@ -20,12 +20,10 @@ $(TARGET18): $(OBJS)
 	gcc $(C18FLAGS) $(OBJS) -o $(TARGET18)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	mkdir -p $(OBJ_DIR)
-	gcc -c $(C18FLAGS) $< -o $@
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	gcc -c $(C11FLAGS) $< -o $@
+	gcc -c $< -o $@
+
+
 
 .PHONY: clean #.PHONY sirve para evitar confusion con otro archivo llamado clean
 clean:
